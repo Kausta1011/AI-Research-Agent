@@ -38,6 +38,8 @@ def acting(state: AgentState):
 
 def should_continue(state : AgentState):
     print("SHOULD CONTINUE?")
+    if state["iteration_count"] >= 3:
+        return {"is_complete" : True, "messages" : ["Stopped: Iteration limit reached"]}
     #is the task done? Can I stop or should I continue?
     question = state["research_question"]
     search_result = state["search_results"]
@@ -64,7 +66,7 @@ def should_continue(state : AgentState):
             messages = [{"role" : "user", "content": missing_prompt}]
         )
         response_text = groq_missing_response.choices[0].message.content
-        return {"is_complete" : False, "messages": [response_text]}
+        return{"is_complete" : False, "messages": [response_text],"iteration_count": state["iteration_count"] + 1}
 
     
 

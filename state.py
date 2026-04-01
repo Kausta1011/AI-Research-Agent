@@ -7,3 +7,4 @@ class AgentState(TypedDict):
     messages : Annotated[list, operator.add]
     is_complete : bool
     final_report : str
+    iteration_count : int

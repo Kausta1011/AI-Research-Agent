@@ -17,6 +17,7 @@ def research(request : ResearchRequest):
             "search_results" : [],
             "messages" : [],
             "is_complete" : False,
-            "final_report" : ""
+            "final_report" : "",
+            "iteration_count" : 0
         })
         return {"final_report": result["final_report"]}

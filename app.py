@@ -21,4 +21,4 @@ if st.button("Ask"):
                 result = response.json()
                 st.write(result["final_report"])
             else:
-                st.error("Something went wrong. Please try again or come back after sometime")
+                st.error("Something went wrong. Most probably the API usage exceeded the daily token limit. Please try again or come back after sometime")
