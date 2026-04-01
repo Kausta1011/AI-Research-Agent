@@ -1,7 +1,10 @@
 import streamlit as st
 import requests
+import os
 
 st.title("Welcome to Research Agent")
+
+backend_url = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 question = st.text_input("Enter your question here")
 
@@ -11,7 +14,7 @@ if st.button("Ask"):
     else:
         with st.spinner("Researching..."):
             response = requests.post(
-                "http://127.0.0.1:8000/research",
+                f"{backend_url}/research",
                 json = {"research_question": question}
             )
             if response.status_code == 200:
