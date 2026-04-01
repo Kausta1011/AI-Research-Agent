@@ -105,4 +105,4 @@ def route(state : AgentState):
 graph.add_conditional_edges("should_continue", route)
 graph.add_edge("final_answer", END)
 
-app = graph.compile()
+research_graph = graph.compile()
